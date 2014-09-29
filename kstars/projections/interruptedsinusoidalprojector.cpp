@@ -48,7 +48,35 @@ bool InterruptedSinusoidalProjector::checkVisibility( SkyPoint *p ) const
 
 QVector< Vector2f > InterruptedSinusoidalProjector::groundPoly(SkyPoint* labelpoint, bool* drawLabel) const
 {
-    return QVector<Vector2f>();
+    QVector<Vector2f> ground;
+
+    for (int i = 0; i < lobes;  i++)
+    {
+        double lobecenter = ((double)i + 0.5 - lobes/2.)*2*dms::PI/lobes;
+        double lobehalfwidth = dms::PI/lobes;
+        for (int j = 0; j < 90; j += 10)
+        {
+            ground.append(Vector2f( m_vp.width/2. - m_vp.zoomFactor*(lobecenter - lobehalfwidth*cos(j*dms::DegToRad)), m_vp.height/2. - j*m_vp.zoomFactor*dms::DegToRad ));
+        }
+        for (int j = 90; j > 0; j -= 10)
+        {
+            ground.append(Vector2f( m_vp.width/2. - m_vp.zoomFactor*(lobecenter + lobehalfwidth*cos(j*dms::DegToRad)), m_vp.height/2. - j*m_vp.zoomFactor*dms::DegToRad ));
+        }
+    }
+    for (int i = lobes - 1; i >= 0; i--)
+    {
+        double lobecenter = ((double)i + 0.5 - lobes/2.)*2*dms::PI/lobes;
+        double lobehalfwidth = dms::PI/lobes;
+        for (int j = 0; j > -90; j -= 10)
+        {
+            ground.append(Vector2f( m_vp.width/2. - m_vp.zoomFactor*(lobecenter + lobehalfwidth*cos(j*dms::DegToRad)), m_vp.height/2. - j*m_vp.zoomFactor*dms::DegToRad ));
+        }
+        for (int j = -90; j < 0; j += 10)
+        {
+            ground.append(Vector2f( m_vp.width/2. - m_vp.zoomFactor*(lobecenter - lobehalfwidth*cos(j*dms::DegToRad)), m_vp.height/2. - j*m_vp.zoomFactor*dms::DegToRad ));
+        }
+    }
+    return ground;
 }
 
 SkyPoint InterruptedSinusoidalProjector::fromScreen(const QPointF& p, dms* LST, const dms* lat) const
