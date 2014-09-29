@@ -87,7 +87,7 @@ void Projector::setViewParams(const ViewParams& p)
 
 double Projector::fov() const
 {
-     return m_fov;
+    return m_fov;
 }
 
 QPointF Projector::toScreen(const SkyPoint* o, bool oRefract, bool* onVisibleHemisphere) const
@@ -183,7 +183,7 @@ bool Projector::checkVisibility( SkyPoint *p ) const
     //TODO deal with alternate projections
     //not clear how this depends on projection
     //FIXME do these heuristics actually work?
-return true;
+
     double dX, dY;
 
     //Skip objects below the horizon if the ground is drawn

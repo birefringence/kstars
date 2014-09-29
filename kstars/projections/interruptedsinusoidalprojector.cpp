@@ -59,13 +59,13 @@ SkyPoint InterruptedSinusoidalProjector::fromScreen(const QPointF& p, dms* LST, 
     double lobeno = floor(A/(2*dms::PI/lobes));
     double lobecenter = (lobeno + 0.5)*2*dms::PI/lobes; 
     double relA = A - lobecenter;
-    
+
     relA = relA / cos(Y);
     A = relA + lobecenter;
 
     if( m_vp.useAltAz )
         A = -1.0*A; //Azimuth goes in opposite direction compared to RA
-    
+
     SkyPoint result;
     if ( m_vp.useAltAz ) {
         dms alt, az;
@@ -97,7 +97,7 @@ Vector2f InterruptedSinusoidalProjector::toScreenVec(const SkyPoint* o, bool oRe
     Q_ASSERT( std::isfinite( Y ) && std::isfinite( dX ) );
     dX = KSUtils::reduceAngle(dX, -dms::PI, dms::PI);
     double lobeno = floor(dX/(2*dms::PI/lobes));
-    double lobecenter = (lobeno + 0.5)*2*dms::PI/lobes; 
+    double lobecenter = (lobeno + 0.5)*2*dms::PI/lobes;
     double relX = dX - lobecenter;
     if( onVisibleHemisphere )
         *onVisibleHemisphere = true;

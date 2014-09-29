@@ -99,7 +99,7 @@ class SkyMap : public QGraphicsView {
                       Equirectangular,
                       Stereographic,
                       Gnomonic,
-		      InterruptedSinusoidal,
+                      InterruptedSinusoidal,
                       UnknownProjection };
 
     /**@return the angular field of view of the sky map, in degrees.
