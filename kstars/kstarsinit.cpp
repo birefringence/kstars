@@ -269,6 +269,11 @@ void KStars::initActions() {
         << KShortcut("F10" )
         << AddToGroup(projectionGroup)
         << Checked(Options::projection() == SkyMap::Gnomonic);
+    actionCollection()->addAction("project_interrupted", this, SLOT( slotMapProjection() ) )
+        << i18n("&Interrupted Sinusoidal" )
+        << KShortcut("F11" )
+        << AddToGroup(projectionGroup)
+        << Checked(Options::projection() == SkyMap::InterruptedSinusoidal);
 
     //Settings Menu:
     //Info Boxes option actions

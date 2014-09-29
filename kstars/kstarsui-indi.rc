@@ -54,6 +54,7 @@
 			<Action name="project_equirectangular"/>
 			<Action name="project_stereographic"/>
 			<Action name="project_gnomonic"/>
+			<Action name="project_interrupted"/>
 		</Menu>
 	</Menu>
 

@@ -1044,6 +1044,8 @@ void KStars::slotMapProjection() {
         Options::setProjection( SkyMap::Stereographic );
     if ( sender() == actionCollection()->action("project_gnomonic") )
         Options::setProjection( SkyMap::Gnomonic );
+    if ( sender() == actionCollection()->action("project_interrupted") )
+        Options::setProjection( SkyMap::InterruptedSinusoidal );
 
     //DEBUG
     kDebug() << i18n( "Projection system: %1", Options::projection() );

@@ -67,6 +67,7 @@
 #include "projections/orthographicprojector.h"
 #include "projections/azimuthalequidistantprojector.h"
 #include "projections/equirectangularprojector.h"
+#include "projections/interruptedsinusoidalprojector.h"
 #include "fov.h"
 
 #include "tools/flagmanager.h"
@@ -1037,6 +1038,9 @@ void SkyMap::setupProjector() {
                 break;
             case Equirectangular:
                 m_proj = new EquirectangularProjector(p);
+                break;
+            case InterruptedSinusoidal:
+                m_proj = new InterruptedSinusoidalProjector(p);
                 break;
             case Lambert: default:
                 //TODO: implement other projection classes

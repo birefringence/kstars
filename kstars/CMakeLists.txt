@@ -382,6 +382,7 @@ set(kstars_projection_SRCS
     projections/orthographicprojector.cpp
     projections/azimuthalequidistantprojector.cpp
     projections/equirectangularprojector.cpp
+    projections/interruptedsinusoidalprojector.cpp
 )
 
 set(kstars_extra_SRCS
